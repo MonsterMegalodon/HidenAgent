@@ -9,8 +9,11 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private Joystick aimStick;
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float turnSpeed = 30f;
+    [SerializeField] float turnAnimationSmoothLerpFactor = 10f;
     [SerializeField] CameraRig cameraRig;
     CharacterController characterController;
+    inventoryComponent inventoryComponent;
+
     Vector2 moveInput;
     Vector2 aimInput;
 
@@ -21,14 +24,23 @@ public class PlayerCharacter : MonoBehaviour
 
     Animator animator;
 
+    float animTurnSpeed = 0f;
+
     private void Awake()
     {
         moveStick.onInputValueChanged += MoveInputUpdated;
         aimStick.onInputValueChanged += AimInputUpdated;
+        aimStick.onStickTapped += AimStickTapped;
         //initializing values
         characterController = GetComponent<CharacterController>();
         viewCamera = Camera.main;
-        animator = GetComponent<Animator>();    
+        animator = GetComponent<Animator>();
+        inventoryComponent = GetComponent<inventoryComponent>();
+    }
+
+    private void AimStickTapped()
+    {
+        inventoryComponent.NextWeapon();
     }
 
     private void AimInputUpdated(Vector2 inputVal)
@@ -54,16 +66,16 @@ public class PlayerCharacter : MonoBehaviour
     {
         ProcessMoveInput();
         ProcessAimInput();
-        UPdateAnimation();
+        UpdateAnimation();
     }
 
-    private void UPdateAnimation()
+    private void UpdateAnimation()
     {
-        float leftSpeed = Vector3.Dot(moveDir, transform.right);
+        float rightSpeed = Vector3.Dot(moveDir, transform.right);
         float forwardSpeed = Vector3.Dot(moveDir, transform.forward);
 
-        animator.SetFloat("leftSpeed", leftSpeed);
-        animator.SetFloat("fwdSpeed", forwardSpeed);
+        animator.SetFloat("leftSpeed", -rightSpeed);
+        animator.SetFloat("forwardSpeed", forwardSpeed);
     }
 
     private void ProcessAimInput()
@@ -71,10 +83,29 @@ public class PlayerCharacter : MonoBehaviour
         //if aim has input, use the aim to determin the turning, if not, use the move input.
         Vector3 lookDir = aimDir.magnitude != 0 ? aimDir : moveDir; //oneliner is often bad practice.
 
+        float goalAnimTurnSpeed = 0f;
         if (lookDir.magnitude != 0)
         {
+            Quaternion prevRot = transform.rotation;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookDir, Vector3.up), Time.deltaTime * turnSpeed);
+            Quaternion newRot = transform.rotation;
+
+            float rotationdelta = Quaternion.Angle(prevRot, newRot);
+
+            float rotateDir = Vector3.Dot(lookDir, transform.right) > 0 ? 1 : -1;
+            
+            goalAnimTurnSpeed = rotationdelta / Time.deltaTime * rotateDir;
+
         }
+
+
+        animTurnSpeed = Mathf.Lerp(goalAnimTurnSpeed, goalAnimTurnSpeed, Time.deltaTime * turnAnimationSmoothLerpFactor);
+        if (animTurnSpeed < 0.01f)
+        {
+            animTurnSpeed = 0f;
+        }
+        animator.SetFloat("turnSpeed", goalAnimTurnSpeed);
+
     }
 
     private void LateUpdate()
