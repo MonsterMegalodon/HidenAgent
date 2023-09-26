@@ -33,7 +33,7 @@ public class inventoryComponent : MonoBehaviour
 
                 }
             }
-            Weapon newWeapon = Instantiate<Weapon>(weaponPrefab);
+            Weapon newWeapon = Instantiate<Weapon>(weaponPrefab, weaponslot);
             newWeapon.Init(gameObject);
 
             weapons.Add(newWeapon);

@@ -26,6 +26,11 @@ public class PlayerCharacter : MonoBehaviour
 
     float animTurnSpeed = 0f;
 
+    public void SwitchWeapon()
+    {
+        inventoryComponent.NextWeapon();
+    }
+
     private void Awake()
     {
         moveStick.onInputValueChanged += MoveInputUpdated;
@@ -40,7 +45,7 @@ public class PlayerCharacter : MonoBehaviour
 
     private void AimStickTapped()
     {
-        inventoryComponent.NextWeapon();
+        animator.SetTrigger("switchWeapon");
     }
 
     private void AimInputUpdated(Vector2 inputVal)
@@ -76,6 +81,8 @@ public class PlayerCharacter : MonoBehaviour
 
         animator.SetFloat("leftSpeed", -rightSpeed);
         animator.SetFloat("forwardSpeed", forwardSpeed);
+
+        animator.SetBool("firing", aimInput.magnitude > 0);
     }
 
     private void ProcessAimInput()
