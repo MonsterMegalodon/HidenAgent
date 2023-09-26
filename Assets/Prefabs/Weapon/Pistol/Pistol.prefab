@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1584174592698161864}
+  - component: {fileID: 4879047086176346137}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   - {fileID: 6724141275439077681}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &4879047086176346137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7241624359156561307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6612030a63927fa48ba2d4d7ad94875f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlotName: PistolSlot
+  animationOverride: {fileID: 22100000, guid: 9d7ea0e55616fbe48825b7347f5547ba, type: 2}
 --- !u!1001 &6724141275438678967
 PrefabInstance:
   m_ObjectHideFlags: 0
