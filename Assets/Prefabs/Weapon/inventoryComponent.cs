@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class inventoryComponent : MonoBehaviour
+public class InventoryComponent : MonoBehaviour
 {
-
-    [SerializeField] RangedWeapon[] initialWeaponPrefabs;
+    [SerializeField] Weapon[] initialWeaponPrefabs;
     [SerializeField] Transform[] weaponSlots;
     [SerializeField] Transform defaultWeaponSlot;
 
-    private List<RangedWeapon> weapons = new List<RangedWeapon>();
+    private List<Weapon> weapons = new List<Weapon>();
 
     int currentWeaponIndex = -1; // negative value means something do not exit.
 
@@ -21,23 +20,22 @@ public class inventoryComponent : MonoBehaviour
 
     private void InitializeWeapons()
     {
-        foreach (RangedWeapon weaponPrefab in initialWeaponPrefabs)
+        foreach(Weapon weaponPrefab in initialWeaponPrefabs)
         {
-            Transform weaponslot = defaultWeaponSlot;
-            foreach (Transform slot in weaponSlots)
+            Transform weaponSlot = defaultWeaponSlot;
+            foreach(Transform slot in weaponSlots)
             {
-                if (slot.name == weaponPrefab.GetSlotName())
+                if(slot.name == weaponPrefab.GetSlotName())
                 {
-                    weaponslot = slot;
+                    weaponSlot = slot;
                     break;
-
                 }
             }
-            RangedWeapon newWeapon = Instantiate<RangedWeapon>(weaponPrefab, weaponslot);
-            newWeapon.Init(gameObject);
 
+            Weapon newWeapon = Instantiate<Weapon>(weaponPrefab, weaponSlot);
+            newWeapon.Init(gameObject);
             weapons.Add(newWeapon);
-            newWeapon.UnEquip();
+            newWeapon.UnEnquip();
         }
 
         NextWeapon();
@@ -46,7 +44,7 @@ public class inventoryComponent : MonoBehaviour
     public void NextWeapon()
     {
         int nextIndex = currentWeaponIndex + 1;
-        if (nextIndex >= weapons.Count)
+        if( nextIndex >= weapons.Count )
         {
             nextIndex = 0;
         }
@@ -63,7 +61,7 @@ public class inventoryComponent : MonoBehaviour
 
         if (currentWeaponIndex != -1)
         {
-            weapons[currentWeaponIndex].UnEquip(); // unequip current weapon if holding any
+            weapons[currentWeaponIndex].UnEnquip(); // unequip current weapon if holding any
         }
 
         currentWeaponIndex = weaponIndex;
@@ -73,21 +71,20 @@ public class inventoryComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     internal void DamagePoint()
     {
-        if (currentWeaponIndex>= 0 && currentWeaponIndex < weapons.Count) 
+        if(currentWeaponIndex>= 0 && currentWeaponIndex < weapons.Count)
         {
             weapons[currentWeaponIndex].Attack();
         }
     }
-
 }
