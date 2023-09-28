@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pistol : Weapon
+public class Pistol : RangedWeapon
 {
-    // Start is called before the first frame update
-    void Start()
+    private AimTargetingComponent aimTargetingComponent;
+
+    private void Awake()
     {
-        
+        aimTargetingComponent = GetComponent<AimTargetingComponent>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Attack()
     {
-        
+        GameObject target = aimTargetingComponent.GetTraget();
+        if (target != null)
+        {
+            Debug.Log($"attacking : {target.name}");
+        }
     }
 }

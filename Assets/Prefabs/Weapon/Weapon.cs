@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour
+public abstract class RangedWeapon : MonoBehaviour
 {
     [SerializeField] string SlotName = "DefaultWeaponSlot";
     [SerializeField] AnimatorOverrideController animationOverride;
@@ -33,4 +33,6 @@ public abstract class Weapon : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    public abstract void Attack();
 }

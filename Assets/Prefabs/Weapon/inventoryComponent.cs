@@ -6,11 +6,11 @@ using UnityEngine;
 public class inventoryComponent : MonoBehaviour
 {
 
-    [SerializeField] Weapon[] initialWeaponPrefabs;
+    [SerializeField] RangedWeapon[] initialWeaponPrefabs;
     [SerializeField] Transform[] weaponSlots;
     [SerializeField] Transform defaultWeaponSlot;
 
-    private List<Weapon> weapons = new List<Weapon>();
+    private List<RangedWeapon> weapons = new List<RangedWeapon>();
 
     int currentWeaponIndex = -1; // negative value means something do not exit.
 
@@ -21,10 +21,10 @@ public class inventoryComponent : MonoBehaviour
 
     private void InitializeWeapons()
     {
-        foreach (Weapon weaponPrefab in initialWeaponPrefabs)
+        foreach (RangedWeapon weaponPrefab in initialWeaponPrefabs)
         {
             Transform weaponslot = defaultWeaponSlot;
-            foreach (Transform slot in weaponSlots) 
+            foreach (Transform slot in weaponSlots)
             {
                 if (slot.name == weaponPrefab.GetSlotName())
                 {
@@ -33,7 +33,7 @@ public class inventoryComponent : MonoBehaviour
 
                 }
             }
-            Weapon newWeapon = Instantiate<Weapon>(weaponPrefab, weaponslot);
+            RangedWeapon newWeapon = Instantiate<RangedWeapon>(weaponPrefab, weaponslot);
             newWeapon.Init(gameObject);
 
             weapons.Add(newWeapon);
@@ -81,4 +81,13 @@ public class inventoryComponent : MonoBehaviour
     {
 
     }
+
+    internal void DamagePoint()
+    {
+        if (currentWeaponIndex>= 0 && currentWeaponIndex < weapons.Count) 
+        {
+            weapons[currentWeaponIndex].Attack();
+        }
+    }
+
 }
