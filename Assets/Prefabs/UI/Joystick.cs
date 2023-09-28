@@ -26,11 +26,11 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
 
         thumbstick.localPosition = thumbstickLocalOffset;
         Vector2 outputVal = thumbstickLocalOffset / background.sizeDelta.y * 2f;
-        if (outputVal.magnitude > deadZone) 
+        if (outputVal.magnitude > deadZone) // out put value has to be bigger than the dead zone before triggering the input value delegate.
         {
-           onInputValueChanged?.Invoke(outputVal);
-            wasDragging = true;
+            onInputValueChanged?.Invoke(outputVal);
         }
+        wasDragging = true;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -43,12 +43,13 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         background.localPosition = Vector2.zero;
         thumbstick.localPosition = Vector2.zero;
         onInputValueChanged?.Invoke(Vector2.zero);
-
-        if (wasDragging) 
-        { 
+        //put it here
+        if(wasDragging)
+        {
             wasDragging = false;
             return;
         }
+
         onStickTapped?.Invoke();
     }
 }

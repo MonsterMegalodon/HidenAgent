@@ -12,8 +12,7 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] float turnAnimationSmoothLerpFactor = 10f;
     [SerializeField] CameraRig cameraRig;
     CharacterController characterController;
-    inventoryComponent inventoryComponent;
-
+    InventoryComponent inventoryComponent;
     Vector2 moveInput;
     Vector2 aimInput;
 
@@ -25,7 +24,7 @@ public class PlayerCharacter : MonoBehaviour
     Animator animator;
 
     float animTurnSpeed = 0f;
-
+    
     public void SwitchWeapon()
     {
         inventoryComponent.NextWeapon();
@@ -40,7 +39,7 @@ public class PlayerCharacter : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         viewCamera = Camera.main;
         animator = GetComponent<Animator>();
-        inventoryComponent = GetComponent<inventoryComponent>();
+        inventoryComponent = GetComponent<InventoryComponent>();
     }
 
     private void AimStickTapped()
@@ -80,7 +79,8 @@ public class PlayerCharacter : MonoBehaviour
         float forwardSpeed = Vector3.Dot(moveDir, transform.forward);
 
         animator.SetFloat("leftSpeed", -rightSpeed);
-        animator.SetFloat("forwardSpeed", forwardSpeed);
+        animator.SetFloat("fwdSpeed", forwardSpeed);
+
 
         animator.SetBool("firing", aimInput.magnitude > 0);
     }
@@ -89,30 +89,28 @@ public class PlayerCharacter : MonoBehaviour
     {
         //if aim has input, use the aim to determin the turning, if not, use the move input.
         Vector3 lookDir = aimDir.magnitude != 0 ? aimDir : moveDir; //oneliner is often bad practice.
-
+        
         float goalAnimTurnSpeed = 0f;
         if (lookDir.magnitude != 0)
         {
-            Quaternion prevRot = transform.rotation;
+            Quaternion prevRot = transform.rotation; // before rotate
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookDir, Vector3.up), Time.deltaTime * turnSpeed);
-            Quaternion newRot = transform.rotation;
-
-            float rotationdelta = Quaternion.Angle(prevRot, newRot);
-
-            float rotateDir = Vector3.Dot(lookDir, transform.right) > 0 ? 1 : -1;
+            Quaternion newRot = transform.rotation; // after rotote
             
-            goalAnimTurnSpeed = rotationdelta / Time.deltaTime * rotateDir;
+            float rotationDelta = Quaternion.Angle(prevRot, newRot); // how much whe have rotated in this frame.
+            
+            float rotateDir = Vector3.Dot(lookDir, transform.right) > 0 ? 1 : -1;
 
+            goalAnimTurnSpeed = rotationDelta / Time.deltaTime * rotateDir; 
         }
 
-
-        animTurnSpeed = Mathf.Lerp(goalAnimTurnSpeed, goalAnimTurnSpeed, Time.deltaTime * turnAnimationSmoothLerpFactor);
+        //smoothes out the turning
+        animTurnSpeed = Mathf.Lerp(animTurnSpeed, goalAnimTurnSpeed, Time.deltaTime * turnAnimationSmoothLerpFactor);
         if (animTurnSpeed < 0.01f)
         {
             animTurnSpeed = 0f;
         }
-        animator.SetFloat("turnSpeed", goalAnimTurnSpeed);
-
+        animator.SetFloat("turnSpeed", animTurnSpeed);
     }
 
     private void LateUpdate()

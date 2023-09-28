@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f727048bd17539948a441c77a325e506
+guid: a3208518931e2d64db6b1592fb9c66f1
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,23 +33,23 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Pistol_Fire
+      name: pistol_fire
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 35
+      lastFrame: 70
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -57,7 +57,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.24291499
+      - time: 0.22475572
         functionName: DamagePoint
         data: 
         objectReferenceParameter: {instanceID: 0}
