@@ -74,7 +74,10 @@ public class BTNodeGraph : GraphView
                 }
                 else
                 {
+                    Undo.RecordObject(tree, "Delete Behavior Tree Node");
                     tree.RemoveNode(graphNode.Node);
+                    Undo.DestroyObjectImmediate(graphNode.Node);
+                    tree.SaveTree();
                 }
             }
 
@@ -88,7 +91,9 @@ public class BTNodeGraph : GraphView
                 IBTNodeParent parent = inputGraphNode.Node as IBTNodeParent;
                 if(parent != null)
                 {
+                    Undo.RecordObject(inputGraphNode.Node, "Delege Behavior Tree Connection");
                     parent.RemoveChild(outputGraphNode.Node);
+                    EditorUtility.SetDirty(inputGraphNode.Node);
                 }
             }
         }
@@ -132,7 +137,9 @@ public class BTNodeGraph : GraphView
 
     private void CreateNode(Type nodeType)
     {
+        Undo.RecordObject(tree, "Add Behavior Tree Node");
         BTNode newNode = tree.CreateNode(nodeType);
+        Undo.RegisterCreatedObjectUndo(newNode, "Add Behavior Tree Node");
         CreateGraphNode(newNode);
     }
 

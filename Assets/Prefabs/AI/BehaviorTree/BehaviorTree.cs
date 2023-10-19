@@ -57,7 +57,7 @@ public class BehaviorTree : ScriptableObject
     public void RemoveNode(BTNode node)
     {
         nodes.Remove(node);
-        AssetDatabase.RemoveObjectFromAsset(node);
+        //AssetDatabase.RemoveObjectFromAsset(node);
         SaveTree();
     }
 

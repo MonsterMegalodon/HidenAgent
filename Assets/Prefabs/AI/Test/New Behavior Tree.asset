@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-67822069755506083
+--- !u!114 &-4059759244026226464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab91bfcc917141c4485c8b5d5cf92cc0, type: 3}
-  m_Name: BTTask_AlwaysFail
+  m_Script: {fileID: 11500000, guid: d6b4642c921ce6a48a2d9c13daad09db, type: 3}
+  m_Name: BTTask_Wait
   m_EditorClassIdentifier: 
-  graphPos: {x: 600, y: 490.52}
-  guid: a824e24d27023564386a65c9d4261b63
---- !u!114 &-27242509272124818
+  graphPos: {x: -219, y: 439}
+  guid: 25b301b309e67fc45b12d21af937ae0f
+  waitTime: 2
+--- !u!114 &-3734011579603306826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -26,9 +27,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a2c2d38495ef84a90ccc0bc13b05f2, type: 3}
   m_Name: BTNode_Root
   m_EditorClassIdentifier: 
-  graphPos: {x: 396, y: 18.800003}
-  guid: 275f14bead21fd045afc5b360877b2ec
-  child: {fileID: 5704692871441326400}
+  graphPos: {x: -138, y: 162}
+  guid: 4a1bef33a6511af4ebde4d15b0fda257
+  child: {fileID: 4167147341095151104}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,15 +42,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c01baa6beae9024aaa9abca8688e50a, type: 3}
   m_Name: New Behavior Tree
   m_EditorClassIdentifier: 
-  rootNode: {fileID: -27242509272124818}
+  rootNode: {fileID: -3734011579603306826}
   nodes:
-  - {fileID: -27242509272124818}
-  - {fileID: 5704692871441326400}
-  - {fileID: 635707118184356647}
-  - {fileID: 556046887182741485}
-  - {fileID: 6210899346118550942}
-  - {fileID: -67822069755506083}
---- !u!114 &556046887182741485
+  - {fileID: -3734011579603306826}
+  - {fileID: 4167147341095151104}
+  - {fileID: -4059759244026226464}
+  - {fileID: 5905157083779859526}
+--- !u!114 &4167147341095151104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,12 +60,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1fe1b68cb2d6e4e8b52d99a8b1b473, type: 3}
   m_Name: Sequencer
   m_EditorClassIdentifier: 
-  graphPos: {x: 412, y: 323}
-  guid: e44cd70826ca4f14c89c98014dda1161
+  graphPos: {x: -123, y: 308}
+  guid: 5910f1df5beeb474d9789559233f7dc2
   children:
-  - {fileID: 6210899346118550942}
-  - {fileID: -67822069755506083}
---- !u!114 &635707118184356647
+  - {fileID: -4059759244026226464}
+  - {fileID: 5905157083779859526}
+--- !u!114 &5905157083779859526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,38 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360cbfdf5b86e4f4b94ba3ee049f16f5, type: 3}
   m_Name: BTTask_Log
   m_EditorClassIdentifier: 
-  graphPos: {x: 652, y: 324}
-  guid: 64125abcc31fd18479e6c38e8732b688
-  message: log
---- !u!114 &5704692871441326400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb1fe1b68cb2d6e4e8b52d99a8b1b473, type: 3}
-  m_Name: Sequencer
-  m_EditorClassIdentifier: 
-  graphPos: {x: 453, y: 176}
-  guid: f5cfdca23cd60d84088e2b9998375e29
-  children:
-  - {fileID: 635707118184356647}
-  - {fileID: 556046887182741485}
---- !u!114 &6210899346118550942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6b4642c921ce6a48a2d9c13daad09db, type: 3}
-  m_Name: BTTask_Wait
-  m_EditorClassIdentifier: 
-  graphPos: {x: 402, y: 480}
-  guid: b2f2e2e567617ae48928e511ce2c1e16
-  waitTime: 2
+  graphPos: {x: 11, y: 450}
+  guid: c9098d3aa7f97b4429e630a7c53511e1
+  message: 
