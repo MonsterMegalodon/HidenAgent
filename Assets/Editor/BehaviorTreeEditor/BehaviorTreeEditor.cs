@@ -59,7 +59,7 @@ public class BehaviorTreeEditor : EditorWindow
 
         if (selectedAsTree != null)
         {
-            m_BTNodeGraph.PoulateTree(selectedAsTree);
+            m_BTNodeGraph.PopulateTree(selectedAsTree);
         }
     }
 

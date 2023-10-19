@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-
+using UnityEditor;
 public class BTGraphNode : Node
 {
     public BTNode Node { get; private set; }
@@ -87,7 +87,9 @@ public class BTGraphNode : Node
     public override void SetPosition(Rect newPos)
     {
         base.SetPosition(newPos);
+        Undo.RecordObject(Node, "Move Behavior Tree Node");
         Node.SetGraphPosition(new Vector2(newPos.xMin, newPos.yMin));
+        EditorUtility.SetDirty(Node);
     }
 
     public override void OnSelected()

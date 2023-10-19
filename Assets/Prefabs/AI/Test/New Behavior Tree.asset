@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab91bfcc917141c4485c8b5d5cf92cc0, type: 3}
   m_Name: BTTask_AlwaysFail
   m_EditorClassIdentifier: 
-  graphPos: {x: 629.4945, y: 466.45255}
+  graphPos: {x: 600, y: 490.52}
   guid: a824e24d27023564386a65c9d4261b63
 --- !u!114 &-27242509272124818
 MonoBehaviour:
@@ -26,7 +26,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a2c2d38495ef84a90ccc0bc13b05f2, type: 3}
   m_Name: BTNode_Root
   m_EditorClassIdentifier: 
-  graphPos: {x: 415, y: 65}
+  graphPos: {x: 396, y: 18.800003}
   guid: 275f14bead21fd045afc5b360877b2ec
   child: {fileID: 5704692871441326400}
 --- !u!114 &11400000
@@ -44,7 +44,6 @@ MonoBehaviour:
   rootNode: {fileID: -27242509272124818}
   nodes:
   - {fileID: -27242509272124818}
-  - {fileID: 8380616769939297942}
   - {fileID: 5704692871441326400}
   - {fileID: 635707118184356647}
   - {fileID: 556046887182741485}
@@ -62,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1fe1b68cb2d6e4e8b52d99a8b1b473, type: 3}
   m_Name: Sequencer
   m_EditorClassIdentifier: 
-  graphPos: {x: 496.065, y: 322.42004}
+  graphPos: {x: 412, y: 323}
   guid: e44cd70826ca4f14c89c98014dda1161
   children:
   - {fileID: 6210899346118550942}
@@ -79,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360cbfdf5b86e4f4b94ba3ee049f16f5, type: 3}
   m_Name: BTTask_Log
   m_EditorClassIdentifier: 
-  graphPos: {x: 713.2, y: 324}
+  graphPos: {x: 652, y: 324}
   guid: 64125abcc31fd18479e6c38e8732b688
   message: log
 --- !u!114 &5704692871441326400
@@ -94,12 +93,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1fe1b68cb2d6e4e8b52d99a8b1b473, type: 3}
   m_Name: Sequencer
   m_EditorClassIdentifier: 
-  graphPos: {x: 405, y: 189}
+  graphPos: {x: 453, y: 176}
   guid: f5cfdca23cd60d84088e2b9998375e29
   children:
-  - {fileID: 8380616769939297942}
-  - {fileID: 556046887182741485}
   - {fileID: 635707118184356647}
+  - {fileID: 556046887182741485}
 --- !u!114 &6210899346118550942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,21 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b4642c921ce6a48a2d9c13daad09db, type: 3}
   m_Name: BTTask_Wait
   m_EditorClassIdentifier: 
-  graphPos: {x: 430, y: 479}
+  graphPos: {x: 402, y: 480}
   guid: b2f2e2e567617ae48928e511ce2c1e16
-  waitTime: 2
---- !u!114 &8380616769939297942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6b4642c921ce6a48a2d9c13daad09db, type: 3}
-  m_Name: BTTask_Wait
-  m_EditorClassIdentifier: 
-  graphPos: {x: 336, y: 323}
-  guid: d189c275167ab2245b2f83d2e17803c4
   waitTime: 2

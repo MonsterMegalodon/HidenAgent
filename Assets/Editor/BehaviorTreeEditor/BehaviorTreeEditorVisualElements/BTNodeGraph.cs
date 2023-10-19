@@ -26,6 +26,15 @@ public class BTNodeGraph : GraphView
         StyleSheet styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/BehaviorTreeEditor/BehaviorTreeEditor.uss");
         styleSheets.Add(styleSheet);
         graphViewChanged += GraphChange;
+        Undo.undoRedoPerformed += RefreshGraph;
+    }
+
+    private void RefreshGraph()
+    {
+        if(tree)
+        {
+            PopulateTree(tree);
+        }
     }
 
     //this function will be called if the graph changes.
@@ -136,7 +145,7 @@ public class BTNodeGraph : GraphView
         AddElement(newGraphNode);
     }
 
-    internal void PoulateTree(BehaviorTree selectedAsTree)
+    internal void PopulateTree(BehaviorTree selectedAsTree)
     {
         SaveTree();
         
