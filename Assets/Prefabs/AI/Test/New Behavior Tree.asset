@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a2c2d38495ef84a90ccc0bc13b05f2, type: 3}
   m_Name: BTNode_Root
   m_EditorClassIdentifier: 
-  graphPos: {x: -138, y: 162}
+  graphPos: {x: -121, y: 163}
   guid: 4a1bef33a6511af4ebde4d15b0fda257
   child: {fileID: 4167147341095151104}
 --- !u!114 &11400000
@@ -77,6 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360cbfdf5b86e4f4b94ba3ee049f16f5, type: 3}
   m_Name: BTTask_Log
   m_EditorClassIdentifier: 
-  graphPos: {x: 11, y: 450}
+  graphPos: {x: 18, y: 440}
   guid: c9098d3aa7f97b4429e630a7c53511e1
-  message: 
+  message: hello!
