@@ -59,7 +59,7 @@ public class BlackboardEntry
         val = default;
         if (value == null) return false;
 
-        if(val.GetType() != typeDictionary[type])
+        if(typeof(T) != typeDictionary[type])
         {
             return false;
         }

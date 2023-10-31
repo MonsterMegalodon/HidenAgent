@@ -61,6 +61,9 @@ public class BTTask_MoveToGameObject : BTNode
         {
             return BTNodeResult.Success;
         }
+
+        agent.SetDestination(target.transform.position);
+
         return BTNodeResult.InProgress;
     }
 

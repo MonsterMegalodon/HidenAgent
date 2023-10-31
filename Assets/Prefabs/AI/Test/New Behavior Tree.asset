@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4059759244026226464
+--- !u!114 &-5320367506416461812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6b4642c921ce6a48a2d9c13daad09db, type: 3}
-  m_Name: BTTask_Wait
+  m_Script: {fileID: 11500000, guid: fa1c0262c7087b1488ceda492e3004fe, type: 3}
+  m_Name: BTTask_MoveToGameObject
   m_EditorClassIdentifier: 
-  graphPos: {x: -219, y: 439}
-  guid: 25b301b309e67fc45b12d21af937ae0f
-  waitTime: 2
+  graphPos: {x: -252, y: 460}
+  guid: e162f2043b0a83347aa3c0948ddfe5ae
+  targetKeyName: target
+  acceptableDistance: 2
 --- !u!114 &-3734011579603306826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,8 +47,9 @@ MonoBehaviour:
   nodes:
   - {fileID: -3734011579603306826}
   - {fileID: 4167147341095151104}
-  - {fileID: -4059759244026226464}
   - {fileID: 5905157083779859526}
+  - {fileID: -5320367506416461812}
+  blackboard: {fileID: 11400000, guid: 2b7ac682759b5134babd882f15eb6688, type: 2}
 --- !u!114 &4167147341095151104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +65,7 @@ MonoBehaviour:
   graphPos: {x: -123, y: 308}
   guid: 5910f1df5beeb474d9789559233f7dc2
   children:
-  - {fileID: -4059759244026226464}
+  - {fileID: -5320367506416461812}
   - {fileID: 5905157083779859526}
 --- !u!114 &5905157083779859526
 MonoBehaviour:
@@ -77,6 +79,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360cbfdf5b86e4f4b94ba3ee049f16f5, type: 3}
   m_Name: BTTask_Log
   m_EditorClassIdentifier: 
-  graphPos: {x: 18, y: 440}
+  graphPos: {x: 34, y: 461}
   guid: c9098d3aa7f97b4429e630a7c53511e1
-  message: hello!
+  message: gotcha!!

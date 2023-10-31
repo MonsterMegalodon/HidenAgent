@@ -10,6 +10,7 @@ public class BehaviorTreeEditor : EditorWindow
 
     private BTNodeGraph m_BTNodeGraph = null;
     private BTInspector m_BTInspector = null;
+    private BTBlackboardInspector m_BTBlackboardInspector = null;
 
     [MenuItem("BehaviorTree/BehaviorTreeEditor")]
     public static void ShowEditor()
@@ -27,6 +28,7 @@ public class BehaviorTreeEditor : EditorWindow
         m_BTNodeGraph = root.Q<BTNodeGraph>();
         m_BTNodeGraph.onNodeSelected += NodeSelected;
         m_BTInspector = root.Q<BTInspector>();
+        m_BTBlackboardInspector = root.Q<BTBlackboardInspector>();
 
         EditorApplication.playModeStateChanged += PlayModeChanged;
     }
@@ -60,6 +62,7 @@ public class BehaviorTreeEditor : EditorWindow
         if (selectedAsTree != null)
         {
             m_BTNodeGraph.PopulateTree(selectedAsTree);
+            m_BTBlackboardInspector.ShowInspectorForBlackboard(selectedAsTree.GetBlackBoard());
         }
     }
 
