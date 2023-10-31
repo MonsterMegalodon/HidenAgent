@@ -9,8 +9,19 @@ public class PerceptionComponent : MonoBehaviour
 
     List<Sense> instantiatedSenses = new List<Sense>();
     LinkedList<PerceptionStimuli> perceivedStimulis = new LinkedList<PerceptionStimuli>();
-        
+
+    public Action<GameObject> onTargetUpdated;
+
     GameObject target;
+
+    void SetTarget(GameObject newTarget)
+    {
+        if(target != newTarget)
+        {
+            target = newTarget;
+            onTargetUpdated?.Invoke(target);
+        }
+    }
 
     private void Awake()
     {
@@ -53,12 +64,12 @@ public class PerceptionComponent : MonoBehaviour
         {
             if (target == null || target != perceivedStimulis.First.Value)
             {
-                target = perceivedStimulis.First.Value.gameObject;
+                SetTarget(perceivedStimulis.First.Value.gameObject);
             }
         }
         else
         {
-            target = null;
+            SetTarget(null);
         }
     }
 

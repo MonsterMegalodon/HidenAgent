@@ -33,6 +33,18 @@ public abstract class BTNode : ScriptableObject
     [HideInInspector]
     string guid = "";
 
+    BehaviorTree owningBehaviorTree;
+
+    public void Init(BehaviorTree behaviorTree)
+    {
+        owningBehaviorTree = behaviorTree;
+    }
+
+    public BehaviorTree GetBehaviorTree()
+    {
+        return owningBehaviorTree;
+    }
+
     public virtual BTNodePortType GetInputPortType()
     {
         return BTNodePortType.Single;

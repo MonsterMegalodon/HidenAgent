@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a2c2d38495ef84a90ccc0bc13b05f2, type: 3}
   m_Name: BTNode_Root
   m_EditorClassIdentifier: 
-  graphPos: {x: -121, y: 163}
+  graphPos: {x: -111, y: 169}
   guid: 4a1bef33a6511af4ebde4d15b0fda257
   child: {fileID: 4167147341095151104}
 --- !u!114 &11400000

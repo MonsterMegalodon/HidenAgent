@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b4795c2d369e54ab6ff56d3d1bf6dc, type: 3}
   m_Name: New Blackboard
   m_EditorClassIdentifier: 
-  blackboardData: []
+  blackboardData:
+  - keyName: owner
+    runtimeValue: 
+    type: 4
+  - keyName: target
+    runtimeValue: 
+    type: 4

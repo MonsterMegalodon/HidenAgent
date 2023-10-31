@@ -13,6 +13,11 @@ public class BehaviorTree : ScriptableObject
     [SerializeField]
     List<BTNode> nodes;
 
+    [SerializeField]
+    Blackboard blackboard;
+
+    public Blackboard GetBlackBoard() { return  blackboard; }
+
     //getter or accssor for the nodes
     public List<BTNode> GetNodes() { return nodes; }
     public void PreConstruct()
@@ -40,6 +45,7 @@ public class BehaviorTree : ScriptableObject
     {
         BTNode newNode = ScriptableObject.CreateInstance(nodeType) as BTNode;
         newNode.name = nodeType.Name;
+        newNode.Init(this);
         nodes.Add(newNode);
         AssetDatabase.AddObjectToAsset(newNode, this);
 
@@ -79,11 +85,13 @@ public class BehaviorTree : ScriptableObject
         clone.rootNode = rootNode.CloneNode() as BTNode_Root;
 
         clone.nodes = new List<BTNode>();
+        clone.blackboard = Instantiate(blackboard);
 
         Traverse(clone.rootNode, 
             (BTNode node) =>
         {
             clone.nodes.Add(node);
+            node.Init(clone);
         }
         );
 

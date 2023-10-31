@@ -87,7 +87,7 @@ public class Blackboard : ScriptableObject
     public delegate void OnBloackboardValueChanged(BlackboardEntry entry);
     public event OnBloackboardValueChanged onBlackboardValueChanged;
 
-    bool SetBloackboardData<T>(string keyName, T val)
+    public bool SetBloackboardData<T>(string keyName, T val)
     {
         foreach(var entry in blackboardData)
         {
@@ -108,7 +108,7 @@ public class Blackboard : ScriptableObject
         return false;
     }
 
-    bool GetBlackboarData<T>(string keyName, out T val)
+    public bool GetBlackboarData<T>(string keyName, out T val)
     {
         foreach(var entry in blackboardData)
         {
