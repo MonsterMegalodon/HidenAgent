@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8618755738673494579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36397b63d79b0145b61e8a9bd36ab8d, type: 3}
+  m_Name: Selector
+  m_EditorClassIdentifier: 
+  graphPos: {x: -61, y: 340}
+  guid: d4c04e7521ad52340a7b8a5ab88fc6c3
+  children:
+  - {fileID: -4987564836445033968}
 --- !u!114 &-8450529855970865980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,9 +28,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97d8ee7749f00a4cab1ff36987ec3a3, type: 3}
   m_Name: BTTaks_MoveToPosition
   m_EditorClassIdentifier: 
-  graphPos: {x: 0, y: 0}
-  guid: 
+  graphPos: {x: 349.19254, y: 821.4635}
+  guid: c2b6f5368bdc3e146ab211674420f341
   targetKeyName: nextPatrolPoint
+  acceptableDistance: 2
+--- !u!114 &-5789525585994014425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1c0262c7087b1488ceda492e3004fe, type: 3}
+  m_Name: BTTask_MoveToGameObject
+  m_EditorClassIdentifier: 
+  graphPos: {x: -501, y: 825.4126}
+  guid: d7503359eb13b2146b879d49b3b3b0ef
+  targetKeyName: target
   acceptableDistance: 2
 --- !u!114 &-5546865130255597701
 MonoBehaviour:
@@ -28,11 +60,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1fe1b68cb2d6e4e8b52d99a8b1b473, type: 3}
   m_Name: Sequencer
   m_EditorClassIdentifier: 
-  graphPos: {x: -116, y: 371}
+  graphPos: {x: 256.19244, y: 633.4635}
   guid: 9901673b02baa014c9002df2253bbbbf
   children:
   - {fileID: 574922963850710820}
+  - {fileID: -8450529855970865980}
   - {fileID: -226598844428118955}
+--- !u!114 &-5511732783932645331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 360cbfdf5b86e4f4b94ba3ee049f16f5, type: 3}
+  m_Name: BTTask_Log
+  m_EditorClassIdentifier: 
+  graphPos: {x: -161.99997, y: 828.4126}
+  guid: 9bba7ba8e6bef0248a5da915f7380c0c
+  message: gotcha!!!
+--- !u!114 &-4987564836445033968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1fe1b68cb2d6e4e8b52d99a8b1b473, type: 3}
+  m_Name: Sequencer
+  m_EditorClassIdentifier: 
+  graphPos: {x: -321, y: 635.4125}
+  guid: 181f3002e26e4b74097002cf02dcc656
+  children:
+  - {fileID: -5789525585994014425}
+  - {fileID: -5511732783932645331}
 --- !u!114 &-3734011579603306826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,9 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a2c2d38495ef84a90ccc0bc13b05f2, type: 3}
   m_Name: BTNode_Root
   m_EditorClassIdentifier: 
-  graphPos: {x: -109, y: 222}
+  graphPos: {x: -50, y: 229}
   guid: 4a1bef33a6511af4ebde4d15b0fda257
-  child: {fileID: -5546865130255597701}
+  child: {fileID: -8618755738673494579}
 --- !u!114 &-226598844428118955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b4642c921ce6a48a2d9c13daad09db, type: 3}
   m_Name: BTTask_Wait
   m_EditorClassIdentifier: 
-  graphPos: {x: 60.834923, y: 537.47723}
+  graphPos: {x: 546.19244, y: 820.4635}
   guid: ff443c73cdc80204086ed6eaa3078d83
   waitTime: 2
 --- !u!114 &11400000
@@ -82,6 +147,10 @@ MonoBehaviour:
   - {fileID: 574922963850710820}
   - {fileID: -226598844428118955}
   - {fileID: -8450529855970865980}
+  - {fileID: -8618755738673494579}
+  - {fileID: -4987564836445033968}
+  - {fileID: -5789525585994014425}
+  - {fileID: -5511732783932645331}
   blackboard: {fileID: 11400000, guid: 2b7ac682759b5134babd882f15eb6688, type: 2}
 --- !u!114 &574922963850710820
 MonoBehaviour:
@@ -95,6 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a162d087b8ef4428cadc5c96d5a3de, type: 3}
   m_Name: BTTask_GetNextPatrolPoint
   m_EditorClassIdentifier: 
-  graphPos: {x: -252, y: 552}
+  graphPos: {x: 119.19247, y: 827.4635}
   guid: d15e9f9dc35e9404fbfce49d3366dada
   patrolPointKeyName: nextPatrolPoint

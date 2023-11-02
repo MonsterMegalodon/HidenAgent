@@ -76,8 +76,12 @@ public class BlackboardEntry
         {BlackboardType.Vector3 , typeof(Vector3)},
         {BlackboardType.GameObject, typeof(GameObject)}
     };
-};
 
+    internal object GetRawValue()
+    {
+        return value;
+    }
+}
 [CreateAssetMenu(menuName = "BehaviorTree/Blackboard")]
 public class Blackboard : ScriptableObject
 {
@@ -119,5 +123,18 @@ public class Blackboard : ScriptableObject
         }
         val = default;
         return false;
+    }
+
+    internal object GetBlackboarRawData(string keyName)
+    {
+        foreach (var entry in blackboardData)
+        {
+            if (entry.GetKeyName() == keyName)
+            {
+                return entry.GetRawValue();
+            }
+        }
+
+        return null;
     }
 }
