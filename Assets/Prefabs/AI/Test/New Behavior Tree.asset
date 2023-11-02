@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8450529855970865980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97d8ee7749f00a4cab1ff36987ec3a3, type: 3}
+  m_Name: BTTaks_MoveToPosition
+  m_EditorClassIdentifier: 
+  graphPos: {x: 0, y: 0}
+  guid: 
+  targetKeyName: nextPatrolPoint
+  acceptableDistance: 2
 --- !u!114 &-5546865130255597701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16,6 +32,7 @@ MonoBehaviour:
   guid: 9901673b02baa014c9002df2253bbbbf
   children:
   - {fileID: 574922963850710820}
+  - {fileID: -226598844428118955}
 --- !u!114 &-3734011579603306826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,8 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b4642c921ce6a48a2d9c13daad09db, type: 3}
   m_Name: BTTask_Wait
   m_EditorClassIdentifier: 
-  graphPos: {x: 0, y: 0}
-  guid: 
+  graphPos: {x: 60.834923, y: 537.47723}
+  guid: ff443c73cdc80204086ed6eaa3078d83
   waitTime: 2
 --- !u!114 &11400000
 MonoBehaviour:
@@ -64,6 +81,7 @@ MonoBehaviour:
   - {fileID: -5546865130255597701}
   - {fileID: 574922963850710820}
   - {fileID: -226598844428118955}
+  - {fileID: -8450529855970865980}
   blackboard: {fileID: 11400000, guid: 2b7ac682759b5134babd882f15eb6688, type: 2}
 --- !u!114 &574922963850710820
 MonoBehaviour:
