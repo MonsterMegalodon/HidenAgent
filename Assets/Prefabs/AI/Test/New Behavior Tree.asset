@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1c0262c7087b1488ceda492e3004fe, type: 3}
   m_Name: BTTask_MoveToGameObject
   m_EditorClassIdentifier: 
-  graphPos: {x: -252, y: 460}
+  graphPos: {x: -241.4, y: 538.1501}
   guid: e162f2043b0a83347aa3c0948ddfe5ae
   targetKeyName: target
   acceptableDistance: 2
@@ -28,7 +28,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a2c2d38495ef84a90ccc0bc13b05f2, type: 3}
   m_Name: BTNode_Root
   m_EditorClassIdentifier: 
-  graphPos: {x: -111, y: 169}
+  graphPos: {x: -117.89999, y: 235.70003}
   guid: 4a1bef33a6511af4ebde4d15b0fda257
   child: {fileID: 4167147341095151104}
 --- !u!114 &11400000
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1fe1b68cb2d6e4e8b52d99a8b1b473, type: 3}
   m_Name: Sequencer
   m_EditorClassIdentifier: 
-  graphPos: {x: -123, y: 308}
+  graphPos: {x: -129.89996, y: 374.70007}
   guid: 5910f1df5beeb474d9789559233f7dc2
   children:
   - {fileID: -5320367506416461812}
@@ -79,6 +79,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360cbfdf5b86e4f4b94ba3ee049f16f5, type: 3}
   m_Name: BTTask_Log
   m_EditorClassIdentifier: 
-  graphPos: {x: 34, y: 461}
+  graphPos: {x: 34.900032, y: 536.0001}
   guid: c9098d3aa7f97b4429e630a7c53511e1
   message: gotcha!!
