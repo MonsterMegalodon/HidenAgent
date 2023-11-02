@@ -33,7 +33,16 @@ public abstract class BTNode : ScriptableObject
     [HideInInspector]
     string guid = "";
 
+    [SerializeField]
+    int priority;
+
     BehaviorTree owningBehaviorTree;
+    public Action<BTNode> onBecomeActive;
+    public int GetPriority() { return priority; }
+    public void SortPriority(ref int priorityCount)
+    {
+        priority = priorityCount++;
+    }
 
     public void Init(BehaviorTree behaviorTree)
     {
@@ -61,6 +70,7 @@ public abstract class BTNode : ScriptableObject
     {
         if(!isStarted)
         {
+            onBecomeActive?.Invoke(this);
             BTNodeResult executeResult = Execute();
             onNodeStateChanged?.Invoke(executeResult);
             isStarted = true;
@@ -82,7 +92,7 @@ public abstract class BTNode : ScriptableObject
         return updateResult;
     }
 
-    protected virtual void End()
+    public virtual void End()
     {
         isStarted = false;
     }

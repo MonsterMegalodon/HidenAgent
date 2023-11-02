@@ -72,7 +72,7 @@ public class BTTask_MoveToGameObject : BTNode
         return Vector3.Distance(owner.transform.position, target.transform.position) <= acceptableDistance;
     }
 
-    protected override void End()
+    public override void End()
     {
         agent.isStopped = true;
         if(blackboard)

@@ -41,9 +41,13 @@ public abstract class Compositor : BTNode, IBTNodeParent
         return children[currentChildIndex].UpdateNode();
     }
 
-    protected override void End()
+    public override void End()
     {
         base.End();
+        foreach(BTNode child in children)
+        {
+            child.End();
+        }
     }
 
     public void AddChild(BTNode childToAdd)

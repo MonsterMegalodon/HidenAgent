@@ -29,6 +29,8 @@ public class AIController : MonoBehaviour
         behaviorTree = behaviorTreeAsset.CloneTree();
         behaviorTree?.PreConstruct();
         behaviorTree.GetBlackBoard().SetBloackboardData("owner", gameObject);
+
+        behaviorTree.Start();
     }
 
     public BehaviorTree GetBehaviorTree()

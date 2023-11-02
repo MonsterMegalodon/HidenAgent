@@ -55,4 +55,10 @@ public abstract class Decorator : BTNode, IBTNodeParent
     {
     
     }
+
+    public override void End()
+    {
+        base.End();
+        child.End();
+    }
 }

@@ -19,3 +19,6 @@ MonoBehaviour:
   - keyName: target
     runtimeValue: 
     type: 4
+  - keyName: nextPatrolPoint
+    runtimeValue: 
+    type: 3

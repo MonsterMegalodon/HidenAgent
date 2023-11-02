@@ -43,8 +43,62 @@ public class BlackboardDecorator : Decorator
         if(!blackboard)
             return BTNodeResult.Failure;
 
+        blackboard.onBlackboardValueChanged -= BlackboardValueChanged;
+        blackboard.onBlackboardValueChanged += BlackboardValueChanged;
+        
         if (!CheckRunCondition())
             return BTNodeResult.Failure;
+
+        return BTNodeResult.InProgress;
+    }
+
+    private void BlackboardValueChanged(BlackboardEntry entry)
+    {
+        if(entry.GetKeyName() == keyName)
+        {
+            object newRawData = entry.GetRawValue();
+            if(notifyRule == NotifyRule.Runcondition)
+            {
+                if(newRawData == null && rawData != null)
+                {
+                    Notify();
+                }else if(newRawData != null && rawData == null)
+                {
+                    Notify();
+                }
+            }else if(notifyRule == NotifyRule.KeyValueChange)
+            {
+                if(newRawData != rawData)
+                {
+                    Notify();
+                }
+            }
+            rawData = newRawData;
+        }
+    }
+
+    private void Notify()
+    {
+        switch (notifyAbort)
+        {
+            case NotifyAbort.None:
+                return;
+            case NotifyAbort.Self:
+                End();
+                break;
+            case NotifyAbort.Lower:
+                GetBehaviorTree().AbortIfCurrentIsLower(GetPriority());
+                break;
+            case NotifyAbort.Both:
+                End();
+                GetBehaviorTree().AbortIfCurrentIsLower(GetPriority());
+                break;
+        }
+    }
+
+    protected override BTNodeResult Update()
+    {
+        return UpdateChild();
     }
 
     private bool CheckRunCondition()

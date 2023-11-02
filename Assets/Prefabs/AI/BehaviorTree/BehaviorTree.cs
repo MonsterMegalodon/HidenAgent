@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class BehaviorTree : ScriptableObject
     [SerializeField]
     Blackboard blackboard;
 
+    BTNode currentNode;
     public Blackboard GetBlackBoard() { return  blackboard; }
 
     //getter or accssor for the nodes
@@ -34,6 +36,27 @@ public class BehaviorTree : ScriptableObject
     protected virtual void Construct(BTNode_Root root)
     {
 
+    }
+
+    public void AbortIfCurrentIsLower(int priority)
+    {
+        if(currentNode.GetPriority() > priority)
+        {
+            rootNode.End();
+        }
+    }
+    public void Start()
+    {
+        SortTree();
+        foreach(BTNode node in nodes)
+        {
+            node.onBecomeActive += CurrentNodeChanged;
+        }
+    }
+
+    private void CurrentNodeChanged(BTNode node)
+    {
+        currentNode = node;
     }
 
     public void Update()
@@ -56,6 +79,7 @@ public class BehaviorTree : ScriptableObject
 
     public void SaveTree()
     {
+        SortTree();
         EditorUtility.SetDirty(this);
         AssetDatabase.SaveAssetIfDirty(this);
     }
@@ -77,6 +101,11 @@ public class BehaviorTree : ScriptableObject
                 parent.SortChildren();
             }
         }
+        int priorityCounter = 0;
+        Traverse(rootNode, (BTNode n) =>
+        {
+            n.SortPriority(ref priorityCounter);
+        });
     }
 
     internal BehaviorTree CloneTree()

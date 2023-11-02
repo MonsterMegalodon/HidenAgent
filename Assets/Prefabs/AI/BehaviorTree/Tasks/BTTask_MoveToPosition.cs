@@ -55,7 +55,7 @@ public class BTTaks_MoveToPosition : BTNode
         return Vector3.Distance(owner.transform.position, pos) <= acceptableDistance;
     }
 
-    protected override void End()
+    public override void End()
     {
         agent.isStopped = true;
         base.End();

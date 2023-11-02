@@ -8,6 +8,12 @@ public class BTNode_Root : BTNode, IBTNodeParent
     [HideInInspector]
     BTNode child;
 
+    public override void End()
+    {
+        base.End();
+        child.End();
+    }
+
     public override BTNodePortType GetInputPortType()
     {
         return BTNodePortType.None;
