@@ -79,6 +79,6 @@ public class Enemy : MonoBehaviour, IMovementInterface, IBTTaskInterface
 
     public void AttackTarget(GameObject target)
     {
-        
+        animator.SetTrigger("attack");
     }
 }
