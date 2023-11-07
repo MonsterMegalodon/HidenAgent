@@ -24,13 +24,13 @@ public class BTTaks_MoveToPosition : BTNode
         blackboard = GetBehaviorTree().GetBlackBoard();
         if (blackboard == null) return BTNodeResult.Failure;
 
-        if (!blackboard.GetBlackboarData("owner", out owner))
+        if (!blackboard.GetBlackboardData("owner", out owner))
             return BTNodeResult.Failure;
 
         agent = owner.GetComponent<NavMeshAgent>();
         if (!agent) return BTNodeResult.Failure;
 
-        if (!blackboard.GetBlackboarData(targetKeyName, out pos))
+        if (!blackboard.GetBlackboardData(targetKeyName, out pos))
             return BTNodeResult.Failure;
 
         agent.stoppingDistance = acceptableDistance;

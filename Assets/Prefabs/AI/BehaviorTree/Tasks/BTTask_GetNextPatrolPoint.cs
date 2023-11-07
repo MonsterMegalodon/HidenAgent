@@ -13,7 +13,7 @@ public class BTTask_GetNextPatrolPoint : BTNode
         Blackboard blackboard = GetBehaviorTree().GetBlackBoard();
         if(!blackboard) return BTNodeResult.Failure;
 
-        if(!blackboard.GetBlackboarData("owner", out GameObject owner))
+        if(!blackboard.GetBlackboardData("owner", out GameObject owner))
             return BTNodeResult.Failure;
 
         PatrollingComponent patrollingComp = owner.GetComponent<PatrollingComponent>();

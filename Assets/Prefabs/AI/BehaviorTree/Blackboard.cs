@@ -81,6 +81,12 @@ public class BlackboardEntry
     {
         return value;
     }
+
+    public void ClearEntryValue()
+    {
+        value = null;
+        runtimeValue = "null";
+    }
 }
 [CreateAssetMenu(menuName = "BehaviorTree/Blackboard")]
 public class Blackboard : ScriptableObject
@@ -112,7 +118,7 @@ public class Blackboard : ScriptableObject
         return false;
     }
 
-    public bool GetBlackboarData<T>(string keyName, out T val)
+    public bool GetBlackboardData<T>(string keyName, out T val)
     {
         foreach(var entry in blackboardData)
         {
@@ -125,7 +131,7 @@ public class Blackboard : ScriptableObject
         return false;
     }
 
-    internal object GetBlackboarRawData(string keyName)
+    internal object GetBlackboardRawData(string keyName)
     {
         foreach (var entry in blackboardData)
         {
@@ -136,5 +142,16 @@ public class Blackboard : ScriptableObject
         }
 
         return null;
+    }
+
+    public void ClearBlackboardData(string keyName)
+    {
+        foreach (var entry in blackboardData)
+        {
+            if (entry.GetKeyName() == keyName)
+            {
+                entry.ClearEntryValue();
+            }
+        }
     }
 }

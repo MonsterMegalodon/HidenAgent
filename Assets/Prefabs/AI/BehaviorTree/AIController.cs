@@ -22,7 +22,7 @@ public class AIController : MonoBehaviour
     {
         if(newTarget == null)
         {
-            if (behaviorTree.GetBlackBoard().GetBlackboarData("target", out GameObject target))
+            if (behaviorTree.GetBlackBoard().GetBlackboardData("target", out GameObject target))
             {
                 behaviorTree.GetBlackBoard().SetBloackboardData("lastSeenLocation", target.transform.position);
             }

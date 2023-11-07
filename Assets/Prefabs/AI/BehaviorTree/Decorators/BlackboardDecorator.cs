@@ -103,7 +103,7 @@ public class BlackboardDecorator : Decorator
 
     private bool CheckRunCondition()
     {
-        rawData = blackboard.GetBlackboarRawData(keyName);
+        rawData = blackboard.GetBlackboardRawData(keyName);
         if(runCondition == RunCondition.KeyExists)
         {
             return rawData != null;
