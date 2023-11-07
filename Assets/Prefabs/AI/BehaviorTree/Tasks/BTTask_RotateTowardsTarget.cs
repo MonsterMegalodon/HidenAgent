@@ -11,7 +11,7 @@ public class BTTask_RotateTowardsTarget : BTNode
     GameObject target;
     GameObject owner;
     Blackboard blackboard;
-    IMovementInterface movementInterface;
+    IBTTaskInterface taskInterface;
 
     protected override BTNodeResult Execute()
     {
@@ -29,8 +29,8 @@ public class BTTask_RotateTowardsTarget : BTNode
         if(!blackboard.GetBlackboardData(keyName, out target))
             return BTNodeResult.Failure;
 
-        movementInterface = owner.GetComponent<IMovementInterface>();
-        if(movementInterface == null) 
+        taskInterface = owner.GetComponent<IBTTaskInterface>();
+        if(taskInterface == null) 
             return BTNodeResult.Failure;
 
         if (InAcceptableAngle())
@@ -48,7 +48,7 @@ public class BTTask_RotateTowardsTarget : BTNode
             return BTNodeResult.Success; 
         }
 
-        movementInterface.RotateTowards(target);
+        taskInterface.RotateTowards(target);
         return BTNodeResult.InProgress;
     }
 

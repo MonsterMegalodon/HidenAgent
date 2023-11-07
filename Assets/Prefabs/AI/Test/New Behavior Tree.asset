@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13456c9b387868f4383dbdb1fac2d7f1, type: 3}
   m_Name: BlackboardDecorator
   m_EditorClassIdentifier: 
-  graphPos: {x: -777.14514, y: 405.9165}
+  graphPos: {x: -886, y: 421}
   guid: 604631836f821d8429d459362403b7a3
   priority: 2
   child: {fileID: -4987564836445033968}
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1c0262c7087b1488ceda492e3004fe, type: 3}
   m_Name: BTTask_MoveToGameObject
   m_EditorClassIdentifier: 
-  graphPos: {x: -1146, y: 740}
+  graphPos: {x: -1380, y: 791}
   guid: d7503359eb13b2146b879d49b3b3b0ef
   priority: 4
   targetKeyName: target
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360cbfdf5b86e4f4b94ba3ee049f16f5, type: 3}
   m_Name: BTTask_Log
   m_EditorClassIdentifier: 
-  graphPos: {x: -589, y: 733}
+  graphPos: {x: -649, y: 783}
   guid: 9bba7ba8e6bef0248a5da915f7380c0c
   priority: 6
   message: gotcha!!!
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1fe1b68cb2d6e4e8b52d99a8b1b473, type: 3}
   m_Name: Sequencer
   m_EditorClassIdentifier: 
-  graphPos: {x: -832.97815, y: 559.20874}
+  graphPos: {x: -894, y: 559}
   guid: 181f3002e26e4b74097002cf02dcc656
   priority: 3
   children:
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0502b32a7e43724581dc104f35fc89a, type: 3}
   m_Name: BTTask_RotateTowardsTarget
   m_EditorClassIdentifier: 
-  graphPos: {x: -863, y: 757}
+  graphPos: {x: -1146, y: 788}
   guid: 783415113ec1be74989091da4dc059f4
   priority: 5
   keyName: target

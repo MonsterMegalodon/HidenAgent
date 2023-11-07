@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IMovementInterface
+public class Enemy : MonoBehaviour, IMovementInterface, IBTTaskInterface
 {
     [SerializeField] ValueGuage healthBarPrefab;
     [SerializeField] Transform healthBarAttachTransform;
@@ -13,6 +13,11 @@ public class Enemy : MonoBehaviour, IMovementInterface
     MovementComponent movementComponent;
 
     ValueGuage healthBar;
+
+    Animator animator;
+
+    Vector3 prevPosition;
+    Vector3 velocity;
 
     private void Awake()
     {
@@ -25,6 +30,7 @@ public class Enemy : MonoBehaviour, IMovementInterface
         UIAttachComponent attachmentComp = healthBar.AddComponent<UIAttachComponent>();
         attachmentComp.SetupAttachment(healthBarAttachTransform);
         movementComponent = GetComponent<MovementComponent>();
+        animator = GetComponent<Animator>();
     }
 
     private void HealthChanged(float currentHealth, float delta, float maxHealth)
@@ -45,13 +51,20 @@ public class Enemy : MonoBehaviour, IMovementInterface
     // Start is called before the first frame update
     void Start()
     {
-        
+        prevPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        CaclucateVelocity();
+    }
+
+    private void CaclucateVelocity()
+    {
+        velocity = (transform.position - prevPosition) / Time.deltaTime;
+        prevPosition = transform.position;
+        animator.SetFloat("speed", velocity.magnitude);
     }
 
     public void RotateTowards(Vector3 direction)
@@ -62,5 +75,10 @@ public class Enemy : MonoBehaviour, IMovementInterface
     public void RotateTowards(GameObject target)
     {
         movementComponent.RotateTowards(target.transform.position - transform.position);
+    }
+
+    public void AttackTarget(GameObject target)
+    {
+        
     }
 }
