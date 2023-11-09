@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ac5d6189310ec4695c651b4cafbba4, type: 3}
   m_Name: BTTask_Attack
   m_EditorClassIdentifier: 
-  graphPos: {x: -965.0949, y: 889.715}
+  graphPos: {x: -914, y: 853}
   guid: 79cd59fcaeaae7546b6d1335d414cdcc
   priority: 6
   keyName: target
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360cbfdf5b86e4f4b94ba3ee049f16f5, type: 3}
   m_Name: BTTask_Log
   m_EditorClassIdentifier: 
-  graphPos: {x: -788.7, y: 767.1501}
+  graphPos: {x: -725, y: 762}
   guid: 9bba7ba8e6bef0248a5da915f7380c0c
   priority: 7
   message: gotcha!!!
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0502b32a7e43724581dc104f35fc89a, type: 3}
   m_Name: BTTask_RotateTowardsTarget
   m_EditorClassIdentifier: 
-  graphPos: {x: -1214.6125, y: 876.68005}
+  graphPos: {x: -1211, y: 855}
   guid: 783415113ec1be74989091da4dc059f4
   priority: 5
   keyName: target

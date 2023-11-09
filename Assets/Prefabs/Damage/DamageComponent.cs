@@ -19,12 +19,19 @@ public abstract class DamageComponent : MonoBehaviour
         this.teamInterface = teamInterface;
     }
 
+    //I have the target, do the damage.
     public void DamageTarget(GameObject target, float damage, GameObject instigator)
     {
         if(ShouldDamage(target))
         {
             ApplyDamage(target, damage, instigator);
         }
+    }
+
+    //figure out target yourself.
+    public virtual void DoDamage()
+    {
+
     }
 
     protected abstract void ApplyDamage(GameObject target, float damage, GameObject instigator);

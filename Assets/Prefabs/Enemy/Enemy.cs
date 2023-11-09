@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IMovementInterface, IBTTaskInterface
+public class Enemy : MonoBehaviour, IMovementInterface, IBTTaskInterface, ITeamInterface
 {
     [SerializeField] ValueGuage healthBarPrefab;
     [SerializeField] Transform healthBarAttachTransform;
+    [SerializeField] DamageComponent damageComponent;
+    [SerializeField] int teamID = 2;
     HealthComponet healthComponet;
 
     MovementComponent movementComponent;
@@ -31,7 +33,10 @@ public class Enemy : MonoBehaviour, IMovementInterface, IBTTaskInterface
         attachmentComp.SetupAttachment(healthBarAttachTransform);
         movementComponent = GetComponent<MovementComponent>();
         animator = GetComponent<Animator>();
+        damageComponent.SetTeamInterface(this);
     }
+
+    public int GetTeamID() { return teamID; }
 
     private void HealthChanged(float currentHealth, float delta, float maxHealth)
     {
@@ -40,7 +45,9 @@ public class Enemy : MonoBehaviour, IMovementInterface, IBTTaskInterface
 
     private void StartDealth(float delta, float maxHealth)
     {
-        Debug.Log("Dead!");
+        Destroy(healthBar.gameObject);
+        animator.SetTrigger("die");
+        GetComponent<AIController>().StopAILogic();
     }
 
     private void TookDamage(float currentHealth, float delta, float maxHealth, GameObject instigator)
@@ -80,5 +87,16 @@ public class Enemy : MonoBehaviour, IMovementInterface, IBTTaskInterface
     public void AttackTarget(GameObject target)
     {
         animator.SetTrigger("attack");
+    }
+
+    public void AttackPoint()
+    {
+        damageComponent.DoDamage();
+    }
+
+    public void DeathAnimationFinished()
+    {
+
+        Destroy(gameObject);
     }
 }
