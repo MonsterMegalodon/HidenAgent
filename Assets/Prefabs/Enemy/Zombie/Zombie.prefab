@@ -73,6 +73,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2473041191021354749, guid: 63964470928ec1249aa6498765a7197f,
+        type: 3}
+      propertyPath: visual
+      value: 
+      objectReference: {fileID: 3846623183981525909}
+    - target: {fileID: 2473041191021354749, guid: 63964470928ec1249aa6498765a7197f,
+        type: 3}
+      propertyPath: lerpSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473041191021354749, guid: 63964470928ec1249aa6498765a7197f,
+        type: 3}
+      propertyPath: damagedColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473041191021354749, guid: 63964470928ec1249aa6498765a7197f,
+        type: 3}
+      propertyPath: damagedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473041191021354749, guid: 63964470928ec1249aa6498765a7197f,
+        type: 3}
+      propertyPath: defaultColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473041191021354749, guid: 63964470928ec1249aa6498765a7197f,
+        type: 3}
+      propertyPath: defaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473041191021354749, guid: 63964470928ec1249aa6498765a7197f,
+        type: 3}
+      propertyPath: defaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473041191021354749, guid: 63964470928ec1249aa6498765a7197f,
+        type: 3}
+      propertyPath: defaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -161,6 +201,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54b9b03c990254f46bb17c573be0774c, type: 3}
+--- !u!1 &3846623183981525909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100116, guid: 54b9b03c990254f46bb17c573be0774c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3846623183981624449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3846623183982012021 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400116, guid: 54b9b03c990254f46bb17c573be0774c,
