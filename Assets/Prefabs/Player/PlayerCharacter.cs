@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCharacter : MonoBehaviour
+public class PlayerCharacter : MonoBehaviour, ITeamInterface, IMovementInterface
 {
     [SerializeField] private Joystick moveStick;
     [SerializeField] private Joystick aimStick;
@@ -11,8 +11,13 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] float turnSpeed = 30f;
     [SerializeField] float turnAnimationSmoothLerpFactor = 10f;
     [SerializeField] CameraRig cameraRig;
+    [SerializeField] int teamID = 1;
+    [SerializeField] UIManager uiManager;
+
     CharacterController characterController;
     InventoryComponent inventoryComponent;
+    MovementComponent movementComponent;
+    HealthComponet healthComponet;  
     Vector2 moveInput;
     Vector2 aimInput;
 
@@ -25,6 +30,8 @@ public class PlayerCharacter : MonoBehaviour
 
     float animTurnSpeed = 0f;
     
+    public int GetTeamID() { return teamID; }   
+
     public void SwitchWeapon()
     {
         inventoryComponent.NextWeapon();
@@ -40,6 +47,15 @@ public class PlayerCharacter : MonoBehaviour
         viewCamera = Camera.main;
         animator = GetComponent<Animator>();
         inventoryComponent = GetComponent<InventoryComponent>();
+        movementComponent = GetComponent<MovementComponent>();
+        healthComponet = GetComponent<HealthComponet>();
+        healthComponet.onHealthEmpty += StartDeath;
+    }
+
+    private void StartDeath(float delta, float maxHealth)
+    {
+        animator.SetTrigger("die");
+        uiManager.SetGameplayControlEnbaled(false);
     }
 
     private void AimStickTapped()
@@ -90,19 +106,7 @@ public class PlayerCharacter : MonoBehaviour
         //if aim has input, use the aim to determin the turning, if not, use the move input.
         Vector3 lookDir = aimDir.magnitude != 0 ? aimDir : moveDir; //oneliner is often bad practice.
         
-        float goalAnimTurnSpeed = 0f;
-        if (lookDir.magnitude != 0)
-        {
-            Quaternion prevRot = transform.rotation; // before rotate
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookDir, Vector3.up), Time.deltaTime * turnSpeed);
-            Quaternion newRot = transform.rotation; // after rotote
-            
-            float rotationDelta = Quaternion.Angle(prevRot, newRot); // how much whe have rotated in this frame.
-            
-            float rotateDir = Vector3.Dot(lookDir, transform.right) > 0 ? 1 : -1;
-
-            goalAnimTurnSpeed = rotationDelta / Time.deltaTime * rotateDir; 
-        }
+        float goalAnimTurnSpeed = movementComponent.RotateTowards(lookDir);
 
         //smoothes out the turning
         animTurnSpeed = Mathf.Lerp(animTurnSpeed, goalAnimTurnSpeed, Time.deltaTime * turnAnimationSmoothLerpFactor);
@@ -142,5 +146,25 @@ public class PlayerCharacter : MonoBehaviour
     public void DamagePoint()
     {
         inventoryComponent.DamagePoint();
+    }
+
+    public void RotateTowards(Vector3 direction)
+    {
+        movementComponent.RotateTowards(direction);
+    }
+
+    public void RotateTowards(GameObject target)
+    {
+        movementComponent.RotateTowards(target.transform.position - transform.position);
+    }
+
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
+
+    public void SetMoveSpeed(float speed)
+    {
+        moveSpeed = speed; 
     }
 }
