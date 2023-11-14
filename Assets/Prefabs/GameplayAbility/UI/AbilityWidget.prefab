@@ -285,3 +285,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede7b2a97ade293498b531fd959638ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 8282739230007183897}
+  cooldownWheel: {fileID: 2798509116191708181}
+  highlightedScale: 1.5
+  scaleSpeed: 20
+  highlightOffset: 200
+  widgetRoot: {fileID: 5522799885506040608}
