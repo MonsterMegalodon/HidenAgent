@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCharacter : MonoBehaviour, ITeamInterface
+public class PlayerCharacter : MonoBehaviour, ITeamInterface, IMovementInterface
 {
     [SerializeField] private Joystick moveStick;
     [SerializeField] private Joystick aimStick;
@@ -146,5 +146,25 @@ public class PlayerCharacter : MonoBehaviour, ITeamInterface
     public void DamagePoint()
     {
         inventoryComponent.DamagePoint();
+    }
+
+    public void RotateTowards(Vector3 direction)
+    {
+        movementComponent.RotateTowards(direction);
+    }
+
+    public void RotateTowards(GameObject target)
+    {
+        movementComponent.RotateTowards(target.transform.position - transform.position);
+    }
+
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
+
+    public void SetMoveSpeed(float speed)
+    {
+        moveSpeed = speed; 
     }
 }
