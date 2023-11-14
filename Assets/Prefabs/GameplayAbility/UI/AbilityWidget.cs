@@ -1,18 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilityWidget : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Ability ability;
+    internal void Init(Ability ability)
     {
-        
+        this.ability = ability;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void ActivateAbility()
     {
-        
+        ability.ActivateAbility();
     }
 }

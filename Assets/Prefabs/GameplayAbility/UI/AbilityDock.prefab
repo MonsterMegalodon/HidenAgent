@@ -160,3 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0337032894898cb40a6e4a8dfc680d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owningAbilityComponent: {fileID: 0}
+  abilityWidgetPrefab: {fileID: 2859676232551101451, guid: a2eceecbdd45e5f47a2cd9299910746e,
+    type: 3}
+  widgetRoot: {fileID: 5522799885506040608}
