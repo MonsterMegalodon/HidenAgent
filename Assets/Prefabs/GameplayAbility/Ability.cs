@@ -7,8 +7,10 @@ public abstract class Ability : ScriptableObject
 {
     [SerializeField] float staminaCost;
     [SerializeField] float cooldownDuration;
-
+    [SerializeField] Sprite icon;
     bool onCooldown = false;
+
+    public Sprite GetIcon() { return icon; }
 
     public AbilityComponent OwningAblityComponet
     {
