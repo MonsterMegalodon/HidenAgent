@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ public class AbilityDock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] AbilityComponent owningAbilityComponent;
     [SerializeField] AbilityWidget abilityWidgetPrefab;
     [SerializeField] RectTransform widgetRoot;
+    [SerializeField] float scaleRange = 100f;
     List<AbilityWidget> abilityWidgets = new List<AbilityWidget>();
 
     PointerEventData touchData;
@@ -46,6 +48,32 @@ public class AbilityDock : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if(touchData!=null)
         {
             highlightedAbilityWidget = GetWidgetFromTouchData();
+        }
+        UpdateScale();
+    }
+
+    private void UpdateScale()
+    {
+        if(touchData==null)
+        {
+            abilityWidgets.ForEach(widget => { widget.SetScaleAmount(0); });
+        }
+        else
+        {
+            float touchPosY = touchData.position.y;
+            foreach(AbilityWidget widget in abilityWidgets)
+            {
+                float widgetPosY = widget.transform.position.y;
+                float distanceY = Mathf.Abs(widgetPosY - touchPosY);
+                if(distanceY > scaleRange)
+                {
+                    widget.SetScaleAmount(0);
+                }
+                else
+                {
+                    widget.SetScaleAmount((scaleRange - distanceY)/scaleRange);   
+                }
+            }
         }
     }
 

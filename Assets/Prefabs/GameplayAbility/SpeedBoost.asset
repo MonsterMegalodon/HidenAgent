@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaCost: 10
   cooldownDuration: 4
+  icon: {fileID: 21300000, guid: d61c0dd57245d344b9e9af73426ce925, type: 3}
   boostAmt: 6
   boostDuration: 2
