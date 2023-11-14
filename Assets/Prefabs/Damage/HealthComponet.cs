@@ -6,7 +6,7 @@ public class HealthComponet : MonoBehaviour
 {
     public delegate void OnHealthChanged(float currentHealth, float delta, float maxHealth);
     public delegate void OnHealthEmpty(float delta, float maxHealth);
-    public delegate void OnTakenDamage(float currentHealth, float delta, float maxHealth, GameObject instigator);
+    public delegate void OnTakenDamage(float currentHealth, float delta, float maxHealth);
 
     public event OnHealthChanged onHealthChanged;
     public event OnHealthEmpty onHealthEmpty;
@@ -15,7 +15,7 @@ public class HealthComponet : MonoBehaviour
     [SerializeField] float currentHealth;
     [SerializeField] float maxHealth;
 
-    public void ChangeHealth(float amt, GameObject instigator)
+    public void ChangeHealth(float amt)
     { 
         //using early return.
         if(amt == 0 || currentHealth == 0)
@@ -28,7 +28,7 @@ public class HealthComponet : MonoBehaviour
         onHealthChanged?.Invoke(currentHealth, amt, maxHealth);
         if(amt < 0)
         {
-            onTakenDamage?.Invoke(currentHealth, amt, maxHealth, instigator);
+            onTakenDamage?.Invoke(currentHealth, amt, maxHealth);
         }
 
         if(currentHealth == 0)
